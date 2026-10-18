@@ -1,0 +1,13 @@
+# Tests run against a real PostgreSQL database, not an in-memory one.
+# Create it once:  createdb -U postgres taskmaster_test
+# Credentials can be overridden with the usual SPRING_DATASOURCE_* environment variables.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskmaster_test
+
+app:
+  attachments:
+    directory: ${java.io.tmpdir}/taskmaster-test-uploads
+  ai:
+    # Tests replace the AI client with a fake, so no real key is ever used.
+    api-key: ""
